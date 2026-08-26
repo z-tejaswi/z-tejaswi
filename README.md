@@ -1,12 +1,4 @@
-# ascii-profile-kit
 
-Build a clean, monochrome **animated GitHub profile**: an ASCII portrait that
-types itself in like a terminal, a neofetch-style info panel, and a live
-contribution graph that refreshes daily on its own — no paid services, no
-tokens, no broken images.
-
-This is my personal build (**Mithun Gowda B**), wired end to end. Fork it, swap
-in your photo and details, and ship your own.
 
 <div align="center">
 
@@ -23,19 +15,6 @@ in your photo and details, and ship your own.
 
 ---
 
-## How it works
-
-GitHub strips `<script>` from READMEs, but it DOES run **SMIL and CSS animations
-inside an SVG** loaded as an `<img>`. So all the motion lives inside self-hosted
-SVGs in the repo — nothing ever 404s or gets rate-limited.
-
-Two things make the portrait look *clean* instead of noisy:
-1. **Monochrome** — one light-gray color, never per-character rainbow.
-2. **Background removed + local contrast (CLAHE)** — so the subject sits on blank
-   space and the face has real highlights/shadows instead of being a dark blob.
-
-## What's inside
-
 ```
 PROMPT.md                    a paste-into-Claude-Code prompt that drives it all
 profile-README-template.md   the README that goes on your profile
@@ -51,7 +30,7 @@ scripts/
   update-profile-art.yml     refreshes the graph every day, automatically
 ```
 
-## Quickstart
+
 
 ```bash
 # 0. deps
@@ -73,17 +52,5 @@ python scripts/render_heatmap_svg.py          # -> contrib-heatmap.svg
 cp profile-README-template.md README.md       # then fill in name / tagline / links
 ```
 
-Create a **public repo named exactly your GitHub username**, drop in the three
-SVGs, `README.md`, the `scripts/` folder, `data/contributions.json`, and
-`.github/`, then push. Set **Settings → Actions → General → Workflow permissions
-→ Read and write** and run the workflow once so the graph appears immediately.
-After that it updates itself daily.
 
-## Tuning cheatsheet
 
-| Want to…                    | Where |
-| --------------------------- | ----- |
-| Punchier / lighter face     | `CONTRAST`, `GAMMA`, `WHITE_FLOOR` in `make_ascii_svg.py`; `clipLimit` in `prep_photo.py` |
-| Type faster / slower        | `ROW_DUR`, `STAGGER` in `make_ascii_svg.py` |
-| Change experience / stack   | `ROWS` and `HOST` in `make_info_card.py` |
-| Info panel too tall         | bump `H` in `make_info_card.py`, then re-match `width=` in the README |
