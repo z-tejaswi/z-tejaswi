@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./avi-ascii.svg" width="820" alt="ASCII portrait" />
+<img src="./avi-ascii.svg" width="1020" alt="ASCII portrait" />
 <br><br>
 <img src="./info-card.svg" width="700" alt="Experience, stack, highlights" />
 <br><br>
